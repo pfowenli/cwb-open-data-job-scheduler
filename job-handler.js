@@ -4,7 +4,7 @@ const {
 const {
     StationRepository,
     ObservationRepository,
-} = require('./repository')
+} = require('./repositories')
 const {
     CWB_OPEN_DATA,
 } = require('./config')

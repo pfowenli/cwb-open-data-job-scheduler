@@ -16,10 +16,6 @@ const _saveOne = async (model = {}) => {
     const data = {
         stationId: model.stationId,
         observationTime: model.observationTime,
-        CITY: model.CITY,
-        CITY_SN: model.CITY_SN,
-        TOWN: model.TOWN,
-        TOWN_SN: model.TOWN_SN,
         ELEV: model.ELEV,
         WDIR: model.WDIR,
         WDSD: model.WDSD,

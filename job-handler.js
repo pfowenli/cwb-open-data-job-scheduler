@@ -112,8 +112,23 @@ async function _syncObservations() {
         }
 
         const weatherElements = _observation.weatherElement
-        for (const weatherElement of weatherElements) {
-            observationData[weatherElement.elementName] = weatherElement.elementValue
+        for (const _weatherElement of weatherElements) {
+            const {
+                elementName,
+                elementValue,
+            } = _weatherElement
+
+            switch (elementName) {
+                case 'H_FXT':
+                case 'D_TXT':
+                case 'D_TNT':
+                    if (elementValue.trim() !== '-99') {
+                        observationData[elementName] = new Date(elementValue)
+                    }
+                    break
+                default:
+                    observationData[elementName] = elementValue
+            }
         }
 
         const observation = await ObservationRepository.findOneByStationIdAndObservationTime(observationData.stationId, observationData.observationTime)
